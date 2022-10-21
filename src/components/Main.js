@@ -33,7 +33,7 @@ const Head = styled.header`
 
 const Title = styled.span`
   width: 100vw;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
 `;
 
@@ -57,7 +57,7 @@ const Menu = styled.nav`
 
 const MenuList = styled(Link)`
   margin: 0 15px;
-  font-size: 11px;
+  font-size: 14px;
   color: black;
   text-decoration: none;
   &:hover {
@@ -69,6 +69,9 @@ const MenuList = styled(Link)`
   &:nth-child(1):hover ${Category} {
     display: flex;
     font-weight: 500;
+  }
+  &:nth-child(5) {
+    font-weight: 600;
   }
 `;
 
