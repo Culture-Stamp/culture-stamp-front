@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react';
-import styled from 'styled-components';
-import TodoTitle from './TodoTitle';
+import { useCallback, useRef, useState } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import TodoInsert from './TodoInsert';
 import TodoItemList from './TodoItemList';
+import update from 'immutability-helper'
 
-function TodoNowTemplate() {
+function TodoTemplate() {
     const [todos, setTodos] = useState([]);
 
     const nextId = useRef(0);
@@ -30,21 +31,26 @@ function TodoNowTemplate() {
            })
         );
     };
-    
-    const handleBoxSubmit = () => {
-      // axios post 로 todos 보내서 저장
-      console.log(todos)
-      // 성공하면 담긴 todos 초기화 하기
-      setTodos([])
-    }
+
+    const moveCard = useCallback((dragIndex, hoverIndex) => {
+      setTodos((preTodos) =>
+        update(preTodos, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, preTodos[dragIndex]],
+          ],
+        }),
+      )
+    }, [])
 
     return (
       <div>
-        <TodoTitle onSubmit={handleBoxSubmit}>&nbsp;SAVE</TodoTitle>
         <TodoInsert onSubmit={handleSubmit}/>
-        <TodoItemList todos={todos} onRemove={onRemove} onToggle={onToggle}/>
+        <DndProvider backend={HTML5Backend}>
+          <TodoItemList todos={todos} onRemove={onRemove} onToggle={onToggle} moveCard={moveCard}/>
+        </DndProvider>
       </div>
     );
   }
 
-export default TodoNowTemplate;
+export default TodoTemplate;

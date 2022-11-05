@@ -6,11 +6,11 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-content: center;
-    margin: 10px 0;
+    margin: 10px 0 20px 0;
 `
 
 const TextInput = styled.input`
-  width: 300px;
+  width: 30vw;
   padding: 10px;
   margin: 0 5px;
   border: 0;

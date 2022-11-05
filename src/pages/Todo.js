@@ -1,11 +1,6 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
-import TodoInsert from '../components/TodoInsert';
-import TodoItemList from '../components/TodoItemList';
-import TodoNowTemplate from '../components/TodoNowTemplate';
-import TodoTemplate from '../components/TodoNowTemplate';
-import TodoPrevTemplate from '../components/TodoPrevTemplate';
+import TodoTemplate from '../components/TodoTemplate';
 
 // 전체 CSS 적용
 const MainBackground = styled.div`
@@ -49,7 +44,7 @@ const Thumbnail = styled.div`
 const ThumbnailItem = styled.div`
   position: relative;
   flex: 1 0 22rem;
-  height: 40vh;
+  height: 60vh;
   margin: 1rem;
   padding: 15px;
   color: #000;
@@ -76,17 +71,8 @@ function Todo() {
                 <Container>
                     <Thumbnail>
                         <ThumbnailItem>
-                            <TodoNowTemplate />
+                            <TodoTemplate />
                         </ThumbnailItem>
-                        <ThumbnailItem>
-                            <TodoPrevTemplate />
-                          </ThumbnailItem>
-                        {/* {todos.map((todo) => (
-                          <ThumbnailItem>
-                            <TodoPrevTemplate />
-                          </ThumbnailItem>
-                        ))} */}
-                        
                     </Thumbnail>
                 </Container>
             </MainSection>

@@ -1,17 +1,18 @@
 import React from "react";
-import styled from "styled-components";
 
 import TodoItem from "./TodoItem";
 
-function TodoItemList({todos, onRemove, onToggle}) {
+function TodoItemList({todos, onRemove, onToggle, moveCard}) {
   return (
     <div>
-      {todos.map((todo) => (
+      {todos.map((todo, index) => (
         <TodoItem
           todo={todo}
           key={todo.id}
           onRemove={onRemove}
           onToggle={onToggle}
+          index={index}
+          moveCard={moveCard}
         />
       ))}
     </div>
