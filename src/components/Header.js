@@ -23,8 +23,9 @@ const Category = styled.div`
   /* justify-content: center; */
   margin-top: 10px;
 `;
-const CategoryList = styled.div`
+const CategoryList = styled(Link)`
   margin-right: 15px;
+  text-decoration: none;
 `;
 
 // 메뉴 부분
@@ -100,10 +101,10 @@ const Header = () => {
         <MenuList>
           CATEGORY
           <Category className="category">
-            <CategoryList>Movie</CategoryList>
-            <CategoryList>Memo</CategoryList>
-            <CategoryList>Book</CategoryList>
-            <CategoryList>Music</CategoryList>
+            <CategoryList to="/movie">Movie</CategoryList>
+            <CategoryList to="/memo">Memo</CategoryList>
+            <CategoryList to="/book">Book</CategoryList>
+            <CategoryList to="/music">Music</CategoryList>
           </Category>
         </MenuList>
         <MenuList to="/date">DATE</MenuList>
