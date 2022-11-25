@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import AddCategory from './AddCategory';
+import CategoryContainer from './CategoryContainer'
 // head부분
 const Head = styled.header`
   position: fixed;
@@ -15,17 +16,6 @@ const Title = styled.span`
   width: 100vw;
   font-size: 17px;
   font-weight: 600;
-`;
-
-// 카테고리 부분
-const Category = styled.div`
-  display: none;
-  /* justify-content: center; */
-  margin-top: 10px;
-`;
-const CategoryList = styled(Link)`
-  margin-right: 15px;
-  text-decoration: none;
 `;
 
 // 메뉴 부분
@@ -43,13 +33,6 @@ const MenuList = styled(Link)`
   text-decoration: none;
   &:hover {
     font-weight: 700;
-  }
-  &:nth-child(1):hover {
-    margin-right: -30px;
-  }
-  &:nth-child(1):hover ${Category} {
-    display: flex;
-    font-weight: 500;
   }
 `;
 
@@ -84,6 +67,13 @@ const Header = () => {
     }
   };
 
+  const [clickCT, setClickCT] = useState(false);
+
+  // 카테고리 눌렀을 때
+  const handleCategory = () => {
+    setClickCT(!clickCT);
+  }
+
   // 스크롤 감지 시 scrollFixed 함수 실행
   useEffect(() => {
     const scrollListener = () => {
@@ -98,15 +88,7 @@ const Header = () => {
     <Head scrollActive={scrollActive ? '7vh' : ''}>
       <Title>C U L T U R E S T A M P</Title>
       <Menu>
-        <MenuList>
-          CATEGORY
-          <Category className="category">
-            <CategoryList to="/movie">Movie</CategoryList>
-            <CategoryList to="/memo">Memo</CategoryList>
-            <CategoryList to="/book">Book</CategoryList>
-            <CategoryList to="/music">Music</CategoryList>
-          </Category>
-        </MenuList>
+        <MenuList onClick={handleCategory}>Category</MenuList>
         <MenuList to="/date">DATE</MenuList>
         <MenuList to="/todo">TODO</MenuList>
         <MenuList to="/my-page">MYPAGE</MenuList>
@@ -114,8 +96,9 @@ const Header = () => {
       </Menu>
 
       <ButtonSection>
-        <AddButton>+</AddButton>
+        <AddButton><AddCategory/></AddButton>
       </ButtonSection>
+      {(clickCT)? <CategoryContainer /> : null}
     </Head>
   );
 };
