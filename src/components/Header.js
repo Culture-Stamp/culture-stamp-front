@@ -40,17 +40,17 @@ const Header = () => {
     <Head scrollActive={scrollActive ? '7vh' : ''}>
       <Title>C U L T U R E S T A M P</Title>
       <Menu>
-        <MenuList onClick={handleCategory}>Category</MenuList>
+        <MenuList onClick={handleCategory}>CATEGORY</MenuList>
         <MenuList to="/date">DATE</MenuList>
         <MenuList to="/todo">TODO</MenuList>
         <MenuList to="/my-page">MYPAGE</MenuList>
         <MenuList to="/login">LOGIN</MenuList>
       </Menu>
 
+      {clickCT ? <CategoryContainer /> : null}
       <ButtonSection>
         <AddButton><AddCategory/></AddButton>
       </ButtonSection>
-      {(clickCT)? <CategoryContainer /> : null}
     </Head>
   );
 };
