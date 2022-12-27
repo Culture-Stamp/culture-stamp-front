@@ -116,16 +116,16 @@ const ThumbnailItem = styled.div`
     object-fit: cover;
   }
 
-  .thumbnailImg:hover {
-    opacity: 0.7;
-  }
-
   .thumbnailText {
     position: absolute;
     visibility: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &:hover {
+    opacity: 0.7;
   }
 
   &:hover .thumbnailText {
