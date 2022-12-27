@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import AddCategory from './AddCategory';
 import CategoryContainer from './CategoryContainer'
 
-const Header = () => {
+const Header = ({title}) => {
   const [scrollY, setScrollY] = useState(0);
   const [scrollActive, setScrollActive] = useState(false);
 
@@ -38,7 +38,7 @@ const Header = () => {
   });
   return (
     <Head scrollActive={scrollActive ? '7vh' : ''}>
-      <Title>C U L T U R E S T A M P</Title>
+      <Title>{title.toUpperCase()}</Title>
       <Menu>
         <MenuList onClick={handleCategory}>CATEGORY</MenuList>
         <MenuList to="/date">DATE</MenuList>
