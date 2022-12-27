@@ -12,6 +12,56 @@ import Img8 from '../assets/images/8.jpg';
 import Img9 from '../assets/images/9.jpg';
 import Header from './Header';
 
+function Main() {
+  return (
+    <MainBackground>
+      <Header />
+      <MainSection>
+        <Container>
+          <Thumbnail>
+            <ThumbnailItem>
+              <img className="thumbnailImg" src={Img1} alt="image1" />
+              <div className="thumbnailText">Movie</div>
+            </ThumbnailItem>
+            <ThumbnailItem>
+              <img className="thumbnailImg" src={Img2} alt="image1" />
+              <div className="thumbnailText">Movie</div>
+            </ThumbnailItem>
+            <ThumbnailItem>
+              <img className="thumbnailImg" src={Img3} alt="image1" />
+              <div className="thumbnailText">Movie</div>
+            </ThumbnailItem>
+            <ThumbnailItem>
+              <img className="thumbnailImg" src={Img4} alt="image1" />
+              <div className="thumbnailText">Movie</div>
+            </ThumbnailItem>
+            <ThumbnailItem>
+              <img className="thumbnailImg" src={Img5} alt="image1" />
+              <div className="thumbnailText">Movie</div>
+            </ThumbnailItem>
+            <ThumbnailItem>
+              <img className="thumbnailImg" src={Img6} alt="image1" />
+              <div className="thumbnailText">Movie</div>
+            </ThumbnailItem>
+            <ThumbnailItem>
+              <img className="thumbnailImg" src={Img7} alt="image1" />
+              <div className="thumbnailText">Movie</div>
+            </ThumbnailItem>
+            <ThumbnailItem>
+              <img className="thumbnailImg" src={Img8} alt="image1" />
+              <div className="thumbnailText">Movie</div>
+            </ThumbnailItem>
+            <ThumbnailItem>
+              <img className="thumbnailImg" src={Img9} alt="image1" />
+              <div className="thumbnailText">Movie</div>
+            </ThumbnailItem>
+          </Thumbnail>
+        </Container>
+      </MainSection>
+    </MainBackground>
+  );
+}
+
 // 전체 CSS 적용
 const MainBackground = styled.div`
   width: 100vw;
@@ -56,54 +106,35 @@ const ThumbnailItem = styled.div`
   flex: 1 0 22rem;
   margin: 1rem;
   color: #fff;
+  font-size: 32px;
+
   cursor: pointer;
-`;
 
-const ThumbnailImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
+  .thumbnailImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-function Main() {
-  return (
-    <MainBackground>
-      <Header />
-      <MainSection>
-        <Container>
-          <Thumbnail>
-            <ThumbnailItem>
-              <ThumbnailImage src={Img1} alt="image1" />
-            </ThumbnailItem>
-            <ThumbnailItem>
-              <ThumbnailImage src={Img2} alt="image2" />
-            </ThumbnailItem>
-            <ThumbnailItem>
-              <ThumbnailImage src={Img3} alt="image3" />
-            </ThumbnailItem>
-            <ThumbnailItem>
-              <ThumbnailImage src={Img4} alt="image4" />
-            </ThumbnailItem>
-            <ThumbnailItem>
-              <ThumbnailImage src={Img5} alt="image5" />
-            </ThumbnailItem>
-            <ThumbnailItem>
-              <ThumbnailImage src={Img6} alt="image6" />
-            </ThumbnailItem>
-            <ThumbnailItem>
-              <ThumbnailImage src={Img7} alt="image7" />
-            </ThumbnailItem>
-            <ThumbnailItem>
-              <ThumbnailImage src={Img8} alt="image8" />
-            </ThumbnailItem>
-            <ThumbnailItem>
-              <ThumbnailImage src={Img9} alt="image9" />
-            </ThumbnailItem>
-          </Thumbnail>
-        </Container>
-      </MainSection>
-    </MainBackground>
-  );
-}
+  .thumbnailImg:hover {
+    opacity: 0.7;
+  }
+
+  .thumbnailText {
+    position: absolute;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:hover .thumbnailText {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    visibility: visible;
+  }
+`;
 
 export default Main;
