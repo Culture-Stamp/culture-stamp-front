@@ -2,46 +2,6 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-};
-
-const Title = styled.h2`
-    margin-top: 0;
-`
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
-
-const Input = styled.input`
-
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    &:focus {
-        outline: none;
-    }
-    &::placeholder {
-        color: #d8e3e7;
-        font-style: italic;
-    }
-`
-
-const Submitbutton = styled.button`
-    width: 50px;
-    margin-top: 15px;
-    border: none;
-`
-
 function AddCategory () {  
     let subtitle;
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -77,5 +37,45 @@ function AddCategory () {
         </div>
     )
 }
+
+// CSS
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+const Title = styled.h2`
+  margin-top: 0;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Input = styled.input`
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: #d8e3e7;
+    font-style: italic;
+  }
+`;
+
+const Submitbutton = styled.button`
+  width: 50px;
+  margin-top: 15px;
+  border: none;
+`;
 
 export default AddCategory;

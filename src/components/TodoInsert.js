@@ -1,44 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    margin: 10px 0 20px 0;
-`
-
-const TextInput = styled.input`
-  width: 30vw;
-  padding: 10px;
-  margin: 0 5px;
-  border: 0;
-  border-bottom: 1px solid #ccc;
-  font-size: 12px;
-  &:focus {
-    outline: none;
-  }
-  &::placeholder {
-    color: #d8e3e7;
-    font-style: italic;
-  }
-`;
-
-const AddButton = styled.button`
-  width: 60px;
-  height: 32px;
-  border: 0;
-  border-radius: 5px;
-  background-color: #9F8585;
-  color: white;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-`;
-
-
 function TodoInsert(props){
     
     const [content, setContent] = useState("");
@@ -87,5 +49,44 @@ function TodoInsert(props){
         </Container>
     )
 }
+
+// CSS
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin: 10px 0 20px 0;
+`;
+
+const TextInput = styled.input`
+  width: 30vw;
+  padding: 10px;
+  margin: 0 5px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: #d8e3e7;
+    font-style: italic;
+  }
+`;
+
+const AddButton = styled.button`
+  width: 60px;
+  height: 32px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #9f8585;
+  color: white;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+`;
 
 export default TodoInsert;

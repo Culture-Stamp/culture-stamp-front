@@ -4,64 +4,6 @@ import {MdDragIndicator} from 'react-icons/md';
 import { useDrag, useDrop } from 'react-dnd';
 import { ItemTypes } from './ItemTypes.js'
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 5rem;
-  margin: 10px 0;
-  padding: 0 30px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border-radius: 10px;
-  overflow: auto;
-`
-
-const Button = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const DoneButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
-  border: 0.1px solid #ccc;
-  border-radius: 50%;
-  background-color: transparent;
-  font-size: 7px;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-`;
-
-const Topic = styled.p`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 300px;
-  height: 30px;
-  padding: 0 10px;
-  margin: 0 10px;
-  font-size: 18px;
-`;
-
-const DeleteButton = styled.button`
-  border: 0;
-  background-color: transparent;
-  font-size: 18px;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-`;
-
-
 function TodoItem({todo, onRemove, onToggle, index, moveCard }) {
     const { id, text, checked } = todo;
     const ref = useRef(null);
@@ -145,5 +87,66 @@ function TodoItem({todo, onRemove, onToggle, index, moveCard }) {
     </Container>
   );
 }
+
+// CSS
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  margin: 10px 0;
+  padding: 0 30px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  overflow: auto;
+`;
+
+const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const DoneButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  border: 0.1px solid #ccc;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 7px;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const Topic = styled.p`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 300px;
+  height: 30px;
+  padding: 0 10px;
+  margin: 0 10px;
+  font-size: 18px;
+`;
+
+const DeleteButton = styled.button`
+  border: 0;
+  background-color: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+`;
+
+
 
 export default TodoItem;
