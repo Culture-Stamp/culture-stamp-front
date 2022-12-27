@@ -8,6 +8,8 @@ const Header = ({title}) => {
   const [scrollY, setScrollY] = useState(0);
   const [scrollActive, setScrollActive] = useState(false);
 
+  const headerTitle = title.toUpperCase().split('').join(' ');
+
   // 스크롤 움직임 확인하는 함수
   const scrollFixed = () => {
     if (scrollY > 10) {
@@ -38,7 +40,7 @@ const Header = ({title}) => {
   });
   return (
     <Head scrollActive={scrollActive ? '7vh' : ''}>
-      <Title>{title.toUpperCase()}</Title>
+      <Title>{headerTitle}</Title>
       <Menu>
         <MenuList onClick={handleCategory}>CATEGORY</MenuList>
         <MenuList to="/date">DATE</MenuList>
@@ -49,7 +51,9 @@ const Header = ({title}) => {
 
       {clickCT ? <CategoryContainer /> : null}
       <ButtonSection>
-        <AddButton><AddCategory/></AddButton>
+        <AddButton>
+          <AddCategory />
+        </AddButton>
       </ButtonSection>
     </Head>
   );
