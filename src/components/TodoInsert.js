@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
@@ -5,6 +6,13 @@ function TodoInsert(props){
     
     const [content, setContent] = useState("");
     const ref = useRef();
+
+    // 현재 시각 가져오기
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+    const dateStr = year + '-' + month + '-' + day;
 
     // 이벤트가 발생할 때마다(글자가 하나씩 입력될 때 마다) 변화를 감지
     const handleChange = (e) => {
@@ -17,14 +25,28 @@ function TodoInsert(props){
         }
     };
     
-    const handleSubmit = (e) => {
+    // todo 입력
+    const handleSubmit = async(e) => {
       e.preventDefault(); // onSubmit 이벤트는 브라우저를 새로고치기 때문에 막아주기
-      if (!content) return;
+
       // 만약 input 창이 빈채로 submit을 하려고 할 땐 return시키기
-      props.onSubmit(content);
-      setContent("");
-      // submit을 한 후에는 input 창을 비우기
-    };
+      if (!content) return;
+
+      // 로그인 기능 구현 후 데이터 수정하기
+      await axios
+        .post('http://localhost:8080/todo', {
+          userId: 1,
+          date: dateStr,
+          content: content,
+          doneFlag: 0,
+        })
+        .then(() => {
+          setContent(''); // submit을 한 후에는 input 창을 비우기
+        });
+
+      // props.onSubmit(content);
+      // setContent(''); // submit을 한 후에는 input 창을 비우기
+    };;
 
     useEffect(() => {
         ref.current.focus();

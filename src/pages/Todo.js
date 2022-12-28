@@ -2,6 +2,24 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import TodoTemplate from '../components/TodoTemplate';
 
+function Todo() {
+    return (
+      <MainBackground>
+        <Header title="todo" />
+        <MainSection>
+          <Container>
+            <Thumbnail>
+              <ThumbnailItem>
+                <TodoTemplate />
+              </ThumbnailItem>
+            </Thumbnail>
+          </Container>
+        </MainSection>
+      </MainBackground>
+    );
+}
+
+
 // 전체 CSS 적용
 const MainBackground = styled.div`
   width: 100vw;
@@ -61,23 +79,5 @@ const ThumbnailItem = styled.div`
     box-shadow: inset 0px 0px 1px white;
 }
 `;
-
-
-function Todo() {
-    return(
-        <MainBackground>
-            <Header />
-            <MainSection>
-                <Container>
-                    <Thumbnail>
-                        <ThumbnailItem>
-                            <TodoTemplate />
-                        </ThumbnailItem>
-                    </Thumbnail>
-                </Container>
-            </MainSection>
-        </MainBackground>
-    )
-}
 
 export default Todo;
