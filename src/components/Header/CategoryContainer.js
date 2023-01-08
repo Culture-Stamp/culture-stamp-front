@@ -1,6 +1,6 @@
 import Slider from "react-slick"; 
-import "../styles/slick.css";
-import "../styles/slick-theme.css";
+import "../../styles/slick.css";
+import "../../styles/slick-theme.css";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 

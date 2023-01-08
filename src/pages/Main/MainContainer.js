@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
 // 임시 이미지 import
-import Img1 from '../assets/images/1.jpg';
-import Img2 from '../assets/images/2.jpg';
-import Img3 from '../assets/images/3.jpg';
-import Img4 from '../assets/images/4.jpg';
-import Img5 from '../assets/images/5.jpg';
-import Img6 from '../assets/images/6.jpg';
-import Img7 from '../assets/images/7.jpg';
-import Img8 from '../assets/images/8.jpg';
-import Img9 from '../assets/images/9.jpg';
-import Header from './Header';
+import Img1 from '../../assets/images/1.jpg';
+import Img2 from '../../assets/images/2.jpg';
+import Img3 from '../../assets/images/3.jpg';
+import Img4 from '../../assets/images/4.jpg';
+import Img5 from '../../assets/images/5.jpg';
+import Img6 from '../../assets/images/6.jpg';
+import Img7 from '../../assets/images/7.jpg';
+import Img8 from '../../assets/images/8.jpg';
+import Img9 from '../../assets/images/9.jpg';
+import Header from '../../components/Header/Header';
 
-function Main({title}) {
+function MainContainer({title}) {
   return (
     <MainBackground>
       <Header title={title} />
@@ -137,4 +137,4 @@ const ThumbnailItem = styled.div`
   }
 `;
 
-export default Main;
+export default MainContainer;

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import Header from '../components/Header';
-import TodoTemplate from '../components/TodoTemplate';
+import Header from '../../components/Header/Header';
+import TodoTemplate from './TodoComponent/TodoTemplate';
 
-function Todo() {
+function TodoContainer() {
     return (
       <MainBackground>
         <Header title="todo" />
@@ -80,4 +80,4 @@ const ThumbnailItem = styled.div`
 }
 `;
 
-export default Todo;
+export default TodoContainer;
