@@ -4,23 +4,23 @@ import "../styles/slick-theme.css";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-function CategoryContainer () {
+function CategoryContainer ({category}) {
   
     const settings = {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 3
+      slidesToShow: 1,
+      slidesToScroll: 1
     };
 
     return (
         <div>
             <StyledSlider {...settings}>
-                <CategoryList to="/movie">Movie</CategoryList>
-                <CategoryList to="/memo">Memo</CategoryList>
-                <CategoryList to="/book">Book</CategoryList>
-                <CategoryList to="/music">Music</CategoryList>
+                {category.map((category) => {
+                  const link = `/${category.category_name}`;
+                  return <CategoryList to={link}>{category.category_name}</CategoryList>
+                })}
             </StyledSlider>
         </div>
     );

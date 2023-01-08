@@ -2,11 +2,13 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function AddCategory () {  
     let subtitle;
     const [modalIsOpen, setIsOpen] = useState(false);
     const [category, setCategory] = useState("");
+    const navigate = useNavigate();
 
     function openModal() {
         setIsOpen(true);
@@ -27,13 +29,16 @@ function AddCategory () {
 
     const handleSubmit = async() => {
       // 로그인 기능 구현 후 데이터 수정하기
-      await axios.post("/category",
+      await axios.post("http://localhost:8080/category",
         {
           categoryName: category,
           reviewCount: 0,
           userId: 1
         }
-      )
+      ).then(()=>{
+        alert("새 카테고리를 등록했습니다.");
+        navigate("/");
+      });
     }
 
     return(

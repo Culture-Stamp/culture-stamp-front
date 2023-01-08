@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import AddCategory from './AddCategory';
 import CategoryContainer from './CategoryContainer'
+import axios from 'axios';
 
 const Header = ({title}) => {
   const [scrollY, setScrollY] = useState(0);
   const [scrollActive, setScrollActive] = useState(false);
+  const [category, setCategory] = useState();
 
   const headerTitle = title.toUpperCase().split('').join(' ');
 
@@ -38,6 +40,15 @@ const Header = ({title}) => {
       window.removeEventListener('scroll', scrollFixed);
     };
   });
+
+  // 카테고리 데이터 가져오기
+  useEffect(()=>{
+    axios.get("http://localhost:8080/category").then((res)=>{
+      console.log("category", res.data);
+      setCategory(res.data);
+    })
+  },[]);
+
   return (
     <Head scrollActive={scrollActive ? '7vh' : ''}>
       <Title>{headerTitle}</Title>
@@ -49,7 +60,7 @@ const Header = ({title}) => {
         <MenuList to="/login">LOGIN</MenuList>
       </Menu>
 
-      {clickCT ? <CategoryContainer /> : null}
+      {clickCT ? <CategoryContainer category={category}/> : null}
       <ButtonSection>
         <AddButton>
           <AddCategory />
