@@ -1,27 +1,31 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import TodoInsert from './TodoInsert';
 import TodoItemList from './TodoItemList';
 import update from 'immutability-helper'
+import axios from 'axios';
 
 function TodoTemplate() {
   const [todos, setTodos] = useState([]);
 
-  const nextId = useRef(0);
+  // todo 데이터 가져오기 api 
+  const getTodoData = () => {
+    axios.get("http://localhost:8080/todo").then((res)=>{
+      console.log("res", res.data);
+      setTodos(res.data);
+    })
+  }
 
-  const handleSubmit = (text) => {
-    const todo = {
-      id: nextId.current,
-      text,
-      checked: false,
-    };
-    setTodos(todos.concat(todo));
-    nextId.current += 1; // nextId를 1씩 더하기
-  };
+  //Todo 데이터 삭제하기 api
+  const removeTodoData = (id) => {
+    axios.delete(`http://localhost:8080/todo/${id}`).then(()=>{
+      console.log("Success Remove!")
+    })
+  }
 
   const onRemove = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    removeTodoData(id);
   };
 
   const onToggle = (id) => {
@@ -43,11 +47,15 @@ function TodoTemplate() {
     );
   }, []);
 
+  useEffect(()=>{
+    getTodoData();
+  },[])
+
   return (
     <div>
-      <TodoInsert onSubmit={handleSubmit} />
+      <TodoInsert getTodoData={getTodoData}/>
       <DndProvider backend={HTML5Backend}>
-        <TodoItemList todos={todos} onRemove={onRemove} onToggle={onToggle} moveCard={moveCard} />
+        <TodoItemList todos={todos} onRemove={onRemove} onToggle={onToggle} moveCard={moveCard}/>
       </DndProvider>
     </div>
   );

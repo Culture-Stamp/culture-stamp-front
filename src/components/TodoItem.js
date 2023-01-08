@@ -5,7 +5,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { ItemTypes } from './ItemTypes.js'
 
 function TodoItem({todo, onRemove, onToggle, index, moveCard }) {
-    const { id, text, checked } = todo;
+    const { id, content, checked } = todo;
     const ref = useRef(null);
     const [{ handlerId }, drop] = useDrop({
       accept: ItemTypes.CARD,
@@ -62,7 +62,7 @@ function TodoItem({todo, onRemove, onToggle, index, moveCard }) {
         isDragging: monitor.isDragging(),
       }),
     })
-    const opacity = isDragging ? 0 : 1
+    //const opacity = isDragging ? 0 : 1
     drag(drop(ref));
 
   return (
@@ -79,9 +79,9 @@ function TodoItem({todo, onRemove, onToggle, index, moveCard }) {
           color: checked ? "#ccc" : "#000",
         }}
       >
-        {text}
+        {content}
       </Topic>
-      <DeleteButton onClick={() => onRemove(id)}>
+      <DeleteButton onClick={() => onRemove(index)}>
         x
       </DeleteButton>
     </Container>
