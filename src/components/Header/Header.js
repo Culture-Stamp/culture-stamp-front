@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CategoryContainer from './CategoryContainer'
 import axios from 'axios';
 
-const Header = ({title}) => {
+const Header = ({ title }) => {
   const [scrollY, setScrollY] = useState(0);
   const [scrollActive, setScrollActive] = useState(false);
   const [category, setCategory] = useState();
@@ -41,12 +41,12 @@ const Header = ({title}) => {
   });
 
   // 카테고리 데이터 가져오기
-  useEffect(()=>{
-    axios.get("http://localhost:8080/category").then((res)=>{
+  useEffect(() => {
+    axios.get("http://localhost:8080/category").then((res) => {
       console.log("category", res.data);
       setCategory(res.data);
     })
-  },[]);
+  }, []);
 
   return (
     <Head scrollActive={scrollActive ? '7vh' : ''}>
@@ -56,10 +56,15 @@ const Header = ({title}) => {
         <MenuList to="/date">DATE</MenuList>
         <MenuList to="/todo">TODO</MenuList>
         <MenuList to="/my-page">MYPAGE</MenuList>
-        <MenuList to="/login">LOGIN</MenuList>
+        <MenuList onClick={() => {
+          // axios.get("http://ec2-3-35-144-181.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google").then((res) => {
+          axios.get("http://localhost:8080/oauth2/authorization/google").then((res) => {
+            console.log('res : ', res);
+          })
+        }}>LOGIN</MenuList>
       </Menu>
 
-      {clickCT ? <CategoryContainer category={category}/> : null}
+      {clickCT ? <CategoryContainer category={category} /> : null}
       <ButtonSection>
         <AddReviewButton>
           +
