@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import AddCategory from './AddCategory';
 import CategoryContainer from './CategoryContainer'
 import axios from 'axios';
 
@@ -62,9 +61,9 @@ const Header = ({title}) => {
 
       {clickCT ? <CategoryContainer category={category}/> : null}
       <ButtonSection>
-        <AddButton>
-          <AddCategory />
-        </AddButton>
+        <AddReviewButton>
+          +
+        </AddReviewButton>
       </ButtonSection>
     </Head>
   );
@@ -111,7 +110,7 @@ const ButtonSection = styled.div`
   justify-content: center;
 `;
 
-const AddButton = styled(Link)`
+const AddReviewButton = styled(Link)`
   margin-left: 80%;
   font-size: 32px;
   text-decoration: none;
