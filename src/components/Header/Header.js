@@ -59,7 +59,8 @@ const Header = ({ title }) => {
         <MenuList to="/my-page">MYPAGE</MenuList>
         <MenuList onClick={() => {
           // axios.get("http://ec2-3-35-144-181.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google").then((res) => {
-          axios.get("http://localhost:8080/oauth2/authorization/google").then((res) => {
+          // axios.get('http://localhost:8080/oauth2/authorization/google').then((res) => {
+          axios.get('http://localhost:8080/oauth2/authorization/google', { withCredentials: true }).then((res) => {
             console.log('res : ', res);
           })
         }}>LOGIN</MenuList>
