@@ -21,9 +21,9 @@ function CategoryContainer ({category}) {
             <StyledSlider {...settings}>
                 {category.map((category) => (
                     <CategoryList to={{
-                      pathname: `/${category.category_name}`}}
+                      pathname: `/${category.categoryName}`}}
                       key={category.id}>
-                        {category.category_name}
+                        {category.categoryName}
                     </CategoryList>
                 ))}
                 <AddCategoryModal text="카테고리 등록" />
