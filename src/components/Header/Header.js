@@ -46,7 +46,7 @@ const Header = ({ title }) => {
       console.log("category", res.data);
       setCategory(res.data);
     })
-  }, []);
+  },[]);
 
   return (
     <Head scrollActive={scrollActive ? '7vh' : ''}>
@@ -73,8 +73,7 @@ const Header = ({ title }) => {
       </ButtonSection>
     </Head>
   );
-};
-
+}
 // CSS
 
 // head부분
@@ -127,3 +126,4 @@ const AddReviewButton = styled(Link)`
 `;
 
 export default Header;
+
