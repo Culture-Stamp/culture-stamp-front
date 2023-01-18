@@ -46,7 +46,7 @@ const Header = ({ title }) => {
       console.log("category", res.data);
       setCategory(res.data);
     })
-  },[]);
+  }, []);
 
   return (
     <Head scrollActive={scrollActive ? '7vh' : ''}>
@@ -66,6 +66,7 @@ const Header = ({ title }) => {
       </Menu>
 
       {clickCT ? <CategoryContainer category={category} /> : null}
+      <input type="text" placeholder='리뷰 검색 창(임시)' />
       <ButtonSection>
         <AddReviewButton>
           +
